@@ -1,25 +1,36 @@
 package app.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class PhoneNumber {
     private Long id;
     private Long clientId;
     private String number;
-    private PhoneType phoneType;
-    private LocalDate created;
-    private LocalDate deleted;
+    private Long typeId;
+    private LocalDateTime created;
+    private LocalDateTime deleted;
 
-    public enum PhoneType {
-        MAIN,
-        ADDITIONAL
+    public PhoneNumber(Long clientId, String number, Long typeId) {
+        this.clientId = clientId;
+        this.number = number;
+        this.typeId = typeId;
+        this.created = LocalDateTime.now();
     }
 
-    public PhoneNumber(String number, PhoneType phoneType, LocalDate created, LocalDate deleted) {
-        this.number = number;
-        this.phoneType = phoneType;
-        this.created = created;
-        this.deleted = deleted;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     public String getNumber() {
@@ -30,27 +41,39 @@ public class PhoneNumber {
         this.number = number;
     }
 
-    public PhoneType getPhoneType() {
-        return phoneType;
+    public Long getTypeId() {
+        return typeId;
     }
 
-    public void setPhoneType(PhoneType phoneType) {
-        this.phoneType = phoneType;
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDate getDeleted() {
+    public LocalDateTime getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(LocalDate deleted) {
+    public void setDeleted(LocalDateTime deleted) {
         this.deleted = deleted;
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneNumber{"
+                + "id=" + id
+                + ", clientId=" + clientId
+                + ", number='" + number + '\''
+                + ", typeId=" + typeId
+                + ", created=" + created
+                + ", deleted=" + deleted
+                + '}';
     }
 }

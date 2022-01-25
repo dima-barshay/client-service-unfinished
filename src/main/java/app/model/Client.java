@@ -1,11 +1,15 @@
 package app.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Client {
     private Long id;
-    private LocalDate created;
-    private LocalDate deleted;
+    private LocalDateTime created;
+    private LocalDateTime deleted;
+
+    public Client() {
+        this.created = LocalDateTime.now();
+    }
 
     public Long getId() {
         return id;
@@ -15,19 +19,28 @@ public class Client {
         this.id = id;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDate getDeleted() {
+    public LocalDateTime getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(LocalDate deleted) {
+    public void setDeleted(LocalDateTime deleted) {
         this.deleted = deleted;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{"
+                + "id=" + id
+                + ", created=" + created
+                + ", deleted=" + deleted
+                + '}';
     }
 }

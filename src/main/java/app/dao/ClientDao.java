@@ -1,15 +1,12 @@
 package app.dao;
 
 import app.model.Client;
-import app.model.PhoneNumber;
 import java.util.Optional;
 
 public interface ClientDao {
-    Long add(String fullName, PhoneNumber number);
+    Long add(Client client);
 
-    Optional<Client> findByPhoneNumber(PhoneNumber number);
+    Optional<Client> getById(long id);
 
-    Optional<Client> get(Long id);
-
-    boolean delete(Long id);
+    boolean delete(long id);
 }

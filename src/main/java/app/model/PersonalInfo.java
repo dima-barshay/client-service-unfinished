@@ -1,7 +1,7 @@
 package app.model;
 
 import java.time.LocalDate;
-import java.util.Objects;
+import java.time.LocalDateTime;
 
 public class PersonalInfo {
     private Long id;
@@ -9,16 +9,29 @@ public class PersonalInfo {
     private String fullName;
     private String passport;
     private LocalDate birthDate;
-    private LocalDate created;
-    private LocalDate deleted;
+    private LocalDateTime created;
+    private LocalDateTime deleted;
 
-    public PersonalInfo(String fullName, String passport,
-                        LocalDate birthDate, LocalDate created, LocalDate deleted) {
+    public PersonalInfo(Long clientId, String fullName, String passport, LocalDate birthDate) {
+        this.clientId = clientId;
         this.fullName = fullName;
         this.passport = passport;
         this.birthDate = birthDate;
-        this.created = created;
-        this.deleted = deleted;
+        this.created = LocalDateTime.now();
+    }
+
+    public PersonalInfo(Long clientId, String fullName) {
+        this.clientId = clientId;
+        this.fullName = fullName;
+        this.created = LocalDateTime.now();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getClientId() {
@@ -53,37 +66,32 @@ public class PersonalInfo {
         this.birthDate = birthDate;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDate getDeleted() {
+    public LocalDateTime getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(LocalDate deleted) {
+    public void setDeleted(LocalDateTime deleted) {
         this.deleted = deleted;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PersonalInfo that = (PersonalInfo) o;
-        return Objects.equals(clientId, that.clientId)
-                && Objects.equals(fullName, that.fullName)
-                && Objects.equals(passport, that.passport)
-                && Objects.equals(birthDate, that.birthDate)
-                && Objects.equals(created, that.created)
-                && Objects.equals(deleted, that.deleted);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(clientId, fullName, passport, birthDate, created, deleted);
+    public String toString() {
+        return "PersonalInfo{"
+                + "id=" + id
+                + ", clientId=" + clientId
+                + ", fullName='" + fullName + '\''
+                + ", passport='" + passport + '\''
+                + ", birthDate=" + birthDate
+                + ", created=" + created
+                + ", deleted=" + deleted
+                + '}';
     }
 }

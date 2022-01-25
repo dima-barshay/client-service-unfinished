@@ -2,7 +2,14 @@ package app.dao;
 
 import app.model.PhoneNumber;
 import java.util.List;
+import java.util.Optional;
 
 public interface PhoneNumberDao {
-    List<PhoneNumber> getByClientId(Long id);
+    Long add(PhoneNumber phoneNumber);
+
+    List<String> getPhoneNumbersByClientId(Long clientId);
+
+    boolean delete(long id);
+
+    Optional<Long> getClientIdByMainPhone(String mainPhoneNumber);
 }
